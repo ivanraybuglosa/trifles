@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< d02abb19a36d235532ee6ae9be242b4e05ec60a5
 ActiveRecord::Schema.define(version: 2018_08_01_093707) do
 
   create_table "users", force: :cascade do |t|
@@ -20,6 +21,18 @@ ActiveRecord::Schema.define(version: 2018_08_01_093707) do
     t.string "avatar"
     t.boolean "admin", default: false
     t.string "password_digest"
+=======
+ActiveRecord::Schema.define(version: 2018_08_01_080615) do
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.boolean "admin", default: false
+    t.string "avatar"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> Added correct_user and logged_in_user methods
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
