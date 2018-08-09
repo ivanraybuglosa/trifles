@@ -5,7 +5,7 @@ module UsersHelper
     if @avatar.present?
       @avatar_user = image_tag(@avatar.url, alt: user.name, class: classes)
     else
-      @avatar_user = image_tag("/images/avatar.jpg", alt: user.name, class: classes)
+      @avatar_user = image_tag("/avatar.jpg", alt: user.name, class: classes)
     end
     return @avatar_user
   end

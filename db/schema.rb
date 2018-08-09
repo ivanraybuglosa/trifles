@@ -10,19 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< d02abb19a36d235532ee6ae9be242b4e05ec60a5
-ActiveRecord::Schema.define(version: 2018_08_01_093707) do
+ActiveRecord::Schema.define(version: 2018_08_09_063858) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "email"
-    t.string "avatar"
-    t.boolean "admin", default: false
-    t.string "password_digest"
-=======
-ActiveRecord::Schema.define(version: 2018_08_01_080615) do
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -32,7 +30,6 @@ ActiveRecord::Schema.define(version: 2018_08_01_080615) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
->>>>>>> Added correct_user and logged_in_user methods
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

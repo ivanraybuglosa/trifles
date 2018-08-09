@@ -4,16 +4,16 @@
 			<div class="card">
 				<div class="card-body text-center">
                     <div class="container">
-                        <%= user_avatar(@user, 'profile-photo') %>
-                        <%= @user.name %>
+                        <%= user_avatar(@user, 'profile-avatar mx-auto d-block') %>
+                        <h5><%= @user.name %></h5>
                         <hr>
                         <div class="row">
                             <div class="col-lg-6">
-                                <strong><%= link_to "#", "#" %></strong>
+                                <strong><%= link_to @user.following.count, "#" %></strong>
                                 <div>following</div>
                             </div>
                             <div class="col-lg-6">
-                                <strong><%= link_to "#", "#" %></strong>
+                                <strong><%= link_to @user.followers.count, "#" %></strong>
                                 <div>followers</div>
                             </div>
                         </div>
