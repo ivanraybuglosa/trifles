@@ -33,6 +33,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def index
+    if params[:search_user]
+      @users = User.where('name LIKE ?', "%#{params[:search_user]}%").page(params[:page]).per(6)
+    else
+      @users = User.all.page(params[:page]).per(6)
+    end
+  end
+
   private
 
   def user_params
