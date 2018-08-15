@@ -14,7 +14,8 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="container">
-                        <%= form_for([:admin, @categories]) do |f| %>
+                        <%= form_for([:admin, @category]) do |f| %>
+                            <%= render 'shared/error_messages', object: f.object %>
                             <div class="form-group">
                                 <%= f.label :title %>
                                 <%= f.text_field :title,    class: 'form-control',

@@ -4,7 +4,7 @@
             <div class="container">
                 <h1 class="text-center">Edit Profile</h1>
                 <%= form_for(@user) do |f| %>
-                <%= render 'shared/error_messages' %>
+                <%= render 'shared/error_messages', object: f.object %>
                 <hr>
                     <div class="form-group text-center">
                         <%= user_avatar(@user, 'edit-profile-photo') %>
