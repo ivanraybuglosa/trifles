@@ -1,0 +1,40 @@
+<div class="container mt-4">
+    <div class="card">
+	    <div class="card-header">
+	        <div class="row">
+		        <div class="col-lg-6">
+		            <h3>Admin | Categories</h3>
+		        </div>
+		        <div class="col-lg-6">
+		            <%= link_to "Add Category", new_admin_category_path, class: 'btn btn-info pull-right' %>
+		        </div>
+	        </div>
+	    </div>
+	    <table class="table table-striped">
+	        <thead>
+		        <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Words</th>
+                    <th>Actions</th>
+		        </tr>
+	        </thead>
+	        <tbody>
+                <% @categories.each do |category| %>
+                    <tr>
+                        <td><%= link_to category.title, admin_category_words_path(category) %></td>
+                        <td><%= category.description %></td>
+                        <td>0</td>
+                        <td>
+                            <%= link_to "Edit", edit_admin_category_path(category), class: 'btn btn-outline-info' %>
+                            <%= link_to "Remove", '#' , class: 'btn btn-outline-danger' %>
+                        </td>
+                    </tr>
+                <% end %>
+	        </tbody>
+	    </table>
+        <div class="container pagination justify-content-center">
+            <%= paginate @categories, window: 1 %>
+        </div>
+    </div>
+</div>

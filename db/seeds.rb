@@ -20,3 +20,11 @@ User.create!(name:  name,
     password:              password,
     password_confirmation: password)
 end
+
+9.times do |n|
+    title  = "title-#{n+1}"
+    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    Category.create!(
+    title: title,
+    description: description)
+end
