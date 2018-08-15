@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 2018_08_09_063858) do
+=======
+ActiveRecord::Schema.define(version: 2018_08_10_015553) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+>>>>>>> Stashed changes
 
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
@@ -33,4 +44,15 @@ ActiveRecord::Schema.define(version: 2018_08_09_063858) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+<<<<<<< Updated upstream
+=======
+  create_table "words", force: :cascade do |t|
+    t.integer "categories_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categories_id"], name: "index_words_on_categories_id"
+  end
+
+>>>>>>> Stashed changes
 end

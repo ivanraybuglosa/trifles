@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h6>Admin | Categories</h6>
+                </div>
+                <div class="col-lg-6">
+                    <%= link_to "Back", admin_categories_path, class: 'btn btn-link pull-right' %>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="container">
+                        <%= form_for([:admin, @categories]) do |f| %>
+                            <div class="form-group">
+                                <%= f.label :title %>
+                                    <%= f.text_field :title,    class: 'form-control',
+                                                                placeholder: 'Category Title' %>
+                            </div>
+                            <div class="form-group">
+                                <%= f.label :description %>
+                                <%= f.text_area :description,   class: 'form-control',
+                                                                placeholder: 'Category Description' %>
+                            </div>
+                            <%= f.submit "Update Category", class: 'btn btn-primary btn-block'%>
+                        <% end %>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
