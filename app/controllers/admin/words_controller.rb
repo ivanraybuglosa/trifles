@@ -38,6 +38,7 @@ class Admin::WordsController < AdminController
     @category = Category.find(params[:category_id])
     @word = @category.words.find(params[:id])
       if @word.update(word_params)
+        flash[:notice] = "Successfully updated Word"
         redirect_to admin_category_words_url
       else
         render 'edit'
