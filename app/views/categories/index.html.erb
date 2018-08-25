@@ -1,0 +1,24 @@
+<div class="container mt-4">
+    <h2>Categories</h2>
+    <div class="row">
+        <% @categories.each do |category| 
+                #if the category has no words, it won't be displayed
+                unless category.words.size == 0 %>
+            <div class="col-lg-6">
+                <div class="jumbotron">
+                    <h3 class="display-6"><%= category.title %></h3>
+                    <p class="text-muted"><%= category.description %></p>
+                    <%= form_for(@lesson) do |f| %>
+                        <%= hidden_field_tag :category_id, category.id %>
+                        <%= hidden_field_tag :user_id, current_user.id %>
+                        <%= f.submit "Learn", class: 'btn btn-primary pull-right' %>
+                    <% end %>
+                </div>
+            </div>
+        <%  end
+                end %>
+    </div>
+    <div class="pagination justify-content-center">
+        <%= paginate @categories, window: 1 %>
+    </div>
+</div>  
