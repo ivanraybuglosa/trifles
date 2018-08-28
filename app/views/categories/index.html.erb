@@ -1,9 +1,7 @@
 <div class="container mt-4">
     <h2>Categories</h2>
     <div class="row">
-        <% @categories.each do |category| 
-                #if the category has no words, it won't be displayed
-                unless category.words.size == 0 %>
+        <% @categories.each do |category| %> 
             <div class="col-lg-6">
                 <div class="jumbotron">
                     <h3 class="display-6"><%= category.title %></h3>
@@ -15,8 +13,7 @@
                     <% end %>
                 </div>
             </div>
-        <%  end
-                end %>
+        <% end %>
     </div>
     <div class="pagination justify-content-center">
         <%= paginate @categories, window: 1 %>
