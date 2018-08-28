@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :relationships
   resources :categories, only: [:index]
 
-  resources :lessons do 
+  resources :lessons, only: [:create, :show] do 
     resources :answers
   end
   
