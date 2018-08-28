@@ -12,7 +12,7 @@
             <div class="jumbotron">
                 <h1 class="text-center"><strong><%= @lesson_word.content %></strong></h1>
                 <% @lesson_word.choices.each do |word| %>
-                    <%= form_for([:lesson, @answer]) do |f| %>
+                    <%= form_for([:lesson, @lesson.answers.build]) do |f| %>
                         <%= f.hidden_field :word_id, value: word.word_id %>
                         <%= f.hidden_field :choice_id, value: word.id %>
                         <%= f.submit word.content, class: 'btn btn-outline-dark btn-block mt-2' %>

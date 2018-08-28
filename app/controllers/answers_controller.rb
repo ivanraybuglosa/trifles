@@ -1,14 +1,12 @@
 class AnswersController < ApplicationController
   def new
     @lesson = Lesson.find(params[:lesson_id])
-    @category = Category.find_by(id: @lesson.category_id)  
-    @answer = @lesson.answers.build
-    @lesson_word = (@category.words - @lesson.words).first
+    @category = Category.find_by(id: @lesson.category_id)
+    @lesson_word = @lesson.next_word.first
       #if all word has been answered, redirect to lesson show
       if @lesson_word.nil?
         redirect_to lesson_url(@lesson.id)
       end
-    
   end
 
   def create
