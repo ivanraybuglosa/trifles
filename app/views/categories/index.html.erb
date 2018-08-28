@@ -8,7 +8,6 @@
                     <p class="text-muted"><%= category.description %></p>
                     <%= form_for(@lesson) do |f| %>
                         <%= hidden_field_tag :category_id, category.id %>
-                        <%= hidden_field_tag :user_id, current_user.id %>
                         <%= f.submit "Learn", class: 'btn btn-primary pull-right' %>
                     <% end %>
                 </div>
