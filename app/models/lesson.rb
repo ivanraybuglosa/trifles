@@ -9,6 +9,6 @@ class Lesson < ApplicationRecord
 
   def next_word
     category = Category.find_by(id: category_id)
-    category.words - words
+    (category.words - words).first
   end
 end

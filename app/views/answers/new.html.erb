@@ -10,8 +10,8 @@
                 </div>
             </div>
             <div class="jumbotron">
-                <h1 class="text-center"><strong><%= @lesson_word.content %></strong></h1>
-                <% @lesson_word.choices.each do |word| %>
+                <h1 class="text-center"><strong><%= @lesson.next_word.content %></strong></h1>
+                <% @lesson.next_word.choices.each do |word| %>
                     <%= form_for([:lesson, @lesson.answers.build]) do |f| %>
                         <%= f.hidden_field :word_id, value: word.word_id %>
                         <%= f.hidden_field :choice_id, value: word.id %>
