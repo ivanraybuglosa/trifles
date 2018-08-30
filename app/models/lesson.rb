@@ -1,6 +1,6 @@
 class Lesson < ApplicationRecord
-  has_many :user
-  has_many :category
+  belongs_to :user
+  belongs_to :category
   has_many :answers
   has_many :words, through: :answers
 
@@ -8,7 +8,6 @@ class Lesson < ApplicationRecord
   validates :category_id, presence: true
 
   def next_word
-    category = Category.find_by(id: category_id)
     (category.words - words).first
   end
 end
