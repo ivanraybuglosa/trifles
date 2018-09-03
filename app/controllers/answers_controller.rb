@@ -4,6 +4,7 @@ class AnswersController < ApplicationController
     @category = Category.find_by(id: @lesson.category_id)
       #if all word has been answered, redirect to lesson show
       if @lesson.next_word.nil?
+        @lesson.update(result: @lesson.lesson_results)
         redirect_to lesson_url(@lesson.id)
       end
   end

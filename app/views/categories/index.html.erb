@@ -4,7 +4,14 @@
         <% @categories.each do |category| %> 
             <div class="col-lg-6">
                 <div class="jumbotron">
-                    <% if category.get_lesson(current_user).nil? %>
+                    <% if category.get_lesson(current_user) && lesson_words(category).empty?   %>
+                        <em class="text-muted pull-right">Learned <%= lesson(category).result %> of <%= category.words.size %></em>
+                        <h3 class="display-6"><%= category.title %></h3>
+                        <p class="text-muted"><%= category.description %></p>
+                        <%= link_to lesson_path(category.get_lesson(current_user).id), class: 'btn btn-light pull-right' do %>
+                            <i class="fa fa-eye" aria-hidden="true"></i> Show results
+                        <% end %>
+                    <% else %>
                         <h3 class="display-6"><%= category.title %></h3>
                         <p class="text-muted"><%= category.description %></p>
                         <%= form_for(@lesson) do |f| %>
