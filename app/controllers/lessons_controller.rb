@@ -7,6 +7,11 @@ class LessonsController < ApplicationController
     end
   end
 
+  def show
+    @lesson = Lesson.find(params[:id])
+    @category = Category.find(@lesson.category_id)
+  end
+
   private
 
   def lesson_params

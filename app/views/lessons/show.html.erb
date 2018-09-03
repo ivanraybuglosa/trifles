@@ -1,3 +1,40 @@
 <div class="container mt-4">
-  <h1 class="text-center">[Showing lesson results here]</h1>
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3><%= @category.title %></h3>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="text-right text-muted">Result: <%= @lesson.lesson_results %> of <%= @category.words.count  %></h3>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>Correct Answer</th>
+                        <th>Answer</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @lesson.answers.each do |answer| %>
+                        <tr>
+                            <td><%= answer.word.content %></td>
+                            <td><%= answer.word.correct_choice.content %></td>
+                            <td><%= answer.choice.content %></td>
+                            <td>
+                                <% if answer.choice.correct == true %>
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                <% else %>
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                <% end %>    
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
