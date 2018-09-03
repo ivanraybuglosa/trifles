@@ -1,7 +1,12 @@
 module CategoriesHelper
 
-  def lesson_size(category,current_user)
-    lesson = category.lessons.find_by(category_id: category, user_id: current_user)
-    lesson.choices.where(correct: true).size
+  def lesson(category)
+    category.lessons.find_by(user: current_user)
   end
+
+  def lesson_words(category)
+    lesson = category.lessons.find_by(user: current_user)
+    category.words - lesson.words
+  end
+
 end
