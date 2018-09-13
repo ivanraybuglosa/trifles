@@ -7,6 +7,5 @@ module UsersHelper
     else
       @avatar_user = image_tag("/avatar.jpg", alt: user.name, class: classes)
     end
-    return @avatar_user
   end
 end
