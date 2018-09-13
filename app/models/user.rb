@@ -55,4 +55,18 @@ class User < ApplicationRecord
     following_ids: following_ids, user_id: id)
   end
 
+  def profile_feed
+    Activity.where(user_id: id)
+  end
+
+  def dashboard_feed
+    following_ids = "SELECT followed_id FROM relationships
+                 WHERE  follower_id = :user_id"
+    Activity.where("user_id IN (#{ following_ids }) OR user_id = :user_id",
+    following_ids: following_ids, user_id: id)
+  end
+
+  def words_learned
+    lessons.sum(:result)
+  end
 end

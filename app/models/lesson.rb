@@ -17,4 +17,12 @@ class Lesson < ApplicationRecord
     choices.where(correct: true).count
   end
 
+  def learned_words
+    choices.where(correct: true)
+  end
+
+  def lesson_activity(current_user)
+    activities.create(activity_id: id, activity_type: "Lesson", user_id: current_user.id)
+  end
+
 end
