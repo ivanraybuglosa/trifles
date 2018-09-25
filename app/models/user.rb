@@ -75,7 +75,7 @@ class User < ApplicationRecord
   end
 
   def remember
-    self.remember_token = User.new_token
+    remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
@@ -86,6 +86,17 @@ class User < ApplicationRecord
 
   def forget 
     update_attribute(:remember_digest,nil)
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, id: auth.id).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.id = auth.id
+      user.email = auth.info.email
+      user.name = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    end
   end
 
 end

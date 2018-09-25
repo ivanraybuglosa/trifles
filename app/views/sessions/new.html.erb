@@ -31,6 +31,9 @@
                                                                 signup_path, class: 'btn btn-link' %>
                         <%= f.submit "Login", class: 'btn btn-primary' %>
                     </div>
+                    <%= link_to "/auth/google_oauth2", class: "btn btn-block btn-danger" do %>
+                        <span class="fa fa-google"></span> Sign in with Google
+                    <% end %>
                 <% end %>
             </div>
         </div>
