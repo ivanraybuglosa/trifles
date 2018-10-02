@@ -8,10 +8,9 @@ class Admin::UsersController < AdminController
     @user = User.find(params[:id])
     if @user.admin?
       @user.update(admin: false)
-      redirect_to admin_users_url
     else
       @user.update(admin: true)
-      redirect_to admin_users_url
     end
+    redirect_to admin_users_url
   end
 end
