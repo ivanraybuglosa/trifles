@@ -9,11 +9,11 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-6">
-                                <strong><%= link_to @user.following.count, "#" %></strong>
+                                <strong id="following"><%= link_to @user.following.count, "#" %></strong>
                                 <div>following</div>
                             </div>
                             <div class="col-lg-6">
-                                <strong><%= link_to @user.followers.count, "#" %></strong>
+                                <strong id="followers"><%= link_to @user.followers.count, "#" %></strong>
                                 <div>followers</div>
                             </div>
                         </div>
@@ -24,6 +24,8 @@
                                 <div>Words learned</div>
                             </div>
                         </div>
+                        <hr>
+                        
                     </div>
                 </div>
             </div>
@@ -31,7 +33,14 @@
         <div class="col-lg-9">
             <div class="card">
                 <div class="card-header">
-                    <h6>Activity Feed</h6>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h6>Activity Feed</h6>
+                        </div>
+                        <div class="col-lg-6">
+                            <%= render partial: 'follow_form', locals: { user: @user } %>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <% @activities.each do |activity|%>
