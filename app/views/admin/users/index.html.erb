@@ -1,0 +1,31 @@
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h3>Users List</h3>
+        </div>
+        <table class="table table-bordered table-stripped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <td>
+                            <%= user_avatar(user, 'feed-avatar mr-3') %>
+                            <%= user.name %>
+                        </td>
+                        <td><%= user.email %></td>
+                        <td><%= admin_users(user) %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <div class="container pagination justify-content-center">
+        <%= paginate @users, window: 1 %>
+        </div>
+    </div>
+</div>

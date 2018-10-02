@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     if params[:search_user]
       @users = User.where('name LIKE ?', "%#{params[:search_user]}%").page(params[:page]).per(6)
     else
-      @users = User.all.page(params[:page]).per(6)
+      @users = User.page(params[:page]).per(6)
     end
   end
 
