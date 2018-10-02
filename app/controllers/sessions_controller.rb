@@ -12,16 +12,16 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       flash[:notice] = 'Invalid User Credentials'
-      render root_url
+      render 'new'
     end
   end
   
   def destroy
     logout if logged_in?
-    redirect_to root_path
+    redirect_to root_url
   end
 
-  def google_auth
+  def google_authentication
     # Get access tokens from the google server
     access_token = request.env["omniauth.auth"]
     user = User.from_omniauth(access_token)
@@ -33,10 +33,10 @@ class SessionsController < ApplicationController
     refresh_token = access_token.credentials.refresh_token
     user.google_refresh_token = refresh_token if refresh_token.present?
     user.save
-    redirect_to root_path
+    redirect_to root_url
   end
 
-  def google_sign_in
+  def google_signin
     googleUser = User.from_omniauth(request.env["omniauth.auth"])
     if user = User.find_by(email: googleUser.email)
       login user
