@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
   root 'static_pages#home'
   # Routes for Google authentication
-  get 'auth/:provider/callback', to: 'sessions#googleSignIn'
+  get 'auth/:provider/callback', to: 'sessions#google_signin'
   get 'auth/failure', to: redirect('/')
   
   
