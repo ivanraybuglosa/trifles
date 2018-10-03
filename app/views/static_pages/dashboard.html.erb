@@ -20,7 +20,7 @@
                             <hr>
                         <div class="row">
                             <div class="col-lg-12">
-                                <strong><%= link_to current_user.words_learned, words_path %></strong>
+                                <strong><%= link_to current_user.words_learned, user_words_path(current_user) %></strong>
                                 <div>Words learned</div>
                             </div>
                         </div>

@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
   has_many :lessons, dependent: :destroy
   has_many :activities, dependent: :destroy
+  has_many :categories, through: :lessons
+  has_many :answers, through: :lessons
   
   def downcase_email
     self.email = email.downcase

@@ -9,10 +9,12 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'static_pages#dashboard'
 
-  resources :users
+  resources :users do
+    resources :words, only: [:index]
+  end
   resources :relationships
   resources :categories, only: [:index]
-  resources :words, only: [:index]
+  
 
   resources :lessons, only: [:create, :show] do 
     resources :answers
