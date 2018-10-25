@@ -17,18 +17,24 @@
         </div>
     </div>
     <div class="row">
-        <% @users.each do |user| %>
-            <div class="col-lg-6">
-                <div class="card text-white bg-light mb-3 p-3">
-                    <section>
-                        <%= user_avatar(user,'profile-avatar') %>
-                        <%= link_to user.name, user_path(user) %>
-                        <% unless current_user?(user) %>
-                            <%= render partial: 'follow_form', locals: { user: user } %>
-                        <% end %>
-                    </section>
-                </div>
+        <% if @users.empty? %>
+            <div class="col-lg-6 offset-lg-3">
+                <h1 class="text-center text-muted">Nothing to show</h1>
             </div>
+        <% else %>
+            <% @users.each do |user| %>
+                <div class="col-lg-6">
+                    <div class="card text-white bg-light mb-3 p-3">
+                        <section>
+                            <%= user_avatar(user,'profile-avatar') %>
+                            <%= link_to user.name, user_path(user) %>
+                            <% unless current_user?(user) %>
+                                <%= render partial: 'follow_form', locals: { user: user } %>
+                            <% end %>
+                        </section>
+                    </div>
+                </div>
+            <% end %>
         <% end %>
     </div>
     <div class="container pagination justify-content-center">

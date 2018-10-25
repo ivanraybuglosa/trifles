@@ -7,7 +7,7 @@ class RelationshipsController < ApplicationController
     relationship = current_user.active_relationships.find_by(followed_id: @user.id)
     relationship.create_activity(user: current_user)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to request.referer }
       format.js
     end
   end
@@ -16,7 +16,7 @@ class RelationshipsController < ApplicationController
     @user = Relationship.find(params[:id]).followed
     current_user.unfollow(@user)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to request.referer }
       format.js
     end
   end

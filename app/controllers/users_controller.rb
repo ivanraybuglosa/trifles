@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
       if @user.save
-        login user
-        remember user
+        login @user
+        remember @user
         redirect_to root_path
       else
         render 'new'
@@ -41,6 +41,20 @@ class UsersController < ApplicationController
     else
       @users = User.page(params[:page]).per(6)
     end
+  end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.following.page(params[:page]).per(10)
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.page(params[:page]).per(10)
+    render 'show_follow'
   end
 
   private
