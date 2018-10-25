@@ -9,11 +9,11 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-6">
-                                <strong><%= link_to @user.following.count, "#" %></strong>
+                                <strong><%= link_to @user.following.count, following_user_path(@user) %></strong>
                                 <div>following</div>
                             </div>
                             <div class="col-lg-6">
-                                <strong><%= link_to @user.followers.count, "#" %></strong>
+                                <strong><%= link_to @user.followers.count, followers_user_path(@user) %></strong>
                                 <div>followers</div>
                             </div>
                         </div>

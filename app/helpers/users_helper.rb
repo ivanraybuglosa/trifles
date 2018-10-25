@@ -18,4 +18,5 @@ module UsersHelper
       link_to "Set as Admin", admin_user_path(user), method: :patch, class: 'btn btn-outline-info btn-block'
     end
   end
+
 end

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'static_pages#dashboard'
 
   resources :users do
+    member do 
+      get :following, :followers
+    end
     resources :words, only: [:index]
   end
   resources :relationships
