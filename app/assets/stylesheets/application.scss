@@ -22,6 +22,17 @@ body {
 
 .homepage {
   margin-top:30px;
+  width: 900px;
+}
+
+.homepage img {
+  opacity: 0.7;
+}
+
+.homepage .homepage-content {
+  margin-top: 30px;
+  line-height: 30px;
+  text-align: justify;
 }
 
 .footer {
@@ -61,3 +72,4 @@ body {
     font-weight: normal;
   }
 }
+
