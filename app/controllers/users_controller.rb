@@ -37,9 +37,9 @@ class UsersController < ApplicationController
 
   def index
     if params[:search_user]
-      @users = User.where('name LIKE ?', "%#{params[:search_user]}%").page(params[:page]).per(6)
+      @users = User.where('name LIKE ?', "%#{params[:search_user]}%").page(params[:page]).per(8)
     else
-      @users = User.page(params[:page]).per(6)
+      @users = User.page(params[:page]).per(8)
     end
   end
 

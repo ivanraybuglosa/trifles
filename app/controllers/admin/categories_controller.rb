@@ -14,7 +14,7 @@ class Admin::CategoriesController < AdminController
   end
   
   def index
-    @categories = Category.all.page(params[:page]).per(5).order(created_at: :desc)
+    @categories = Category.all.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def destroy
