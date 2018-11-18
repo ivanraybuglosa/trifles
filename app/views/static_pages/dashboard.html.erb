@@ -6,6 +6,7 @@
                     <div class="container">
                         <%= user_avatar(current_user, 'profile-avatar mx-auto d-block') %>
                         <h5><%= current_user.name %></h5>
+                        <small class="text-muted"><%= current_user.email %></small>
                         <hr>
                         <div class="row">
                             <div class="col-lg-6">
@@ -34,50 +35,54 @@
                     <h6>Activity Feed</h6>
                 </div>
                 <div class="card-body">
-                    <% @feed.each do |activity|%>
-                        <% if activity.action_type == "Lesson" %>
-                            <div class="container mt-2">
-                                <div class="media">
-                                    <div class="media-left media-middle">
-                                        <% if activity.user == current_user %>
-                                            <%= user_avatar(current_user, 'feed-avatar mr-3') %>
-                                        <% else %>
-                                            <%= user_avatar(activity.user, 'feed-avatar mr-3') %>
-                                        <% end %>
-                                    </div>
-                                    <div class="media-body align-self-center">
-                                        <%= link_to_if activity.user == current_user, "You", user_path(current_user) do
-                                            link_to activity.user.name, user_path(activity.user.id) end %> learned 
-                                        <%= activity.action.lesson_results %> of 
-                                        <%= activity.action.words.size %> in 
-                                        <%= link_to activity.action.category.title, lesson_path(activity.action.id) %>
-                                        <div>
-                                            <small class="text-muted"><%= time_ago_in_words(activity.created_at) %></small>
-                                        </div>                                    
-                                    </div>
-                                </div>
-                            </div>
-                        <% else %>
-                            <div class="container mt-2">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <% if activity.user == current_user %>
-                                            <%= user_avatar(current_user, 'feed-avatar mr-3') %>
-                                        <% else %>
-                                            <%= user_avatar(activity.user, 'feed-avatar mr-3') %>
-                                        <% end %>
-                                    </div>
-                                    <div class="media-body align-self-center">
-                                        <%= link_to_if activity.user == current_user, "You", user_path(current_user) do
-                                            link_to activity.user.name, user_path(activity.user.id) end %> followed 
-                                        <%= link_to relationship_activity(activity.action.followed_id).name, user_path(activity.action.followed_id) %>
-                                        <div>
-                                            <small class="text-muted"><%= time_ago_in_words(activity.created_at) %></small>
+                    <% if @feed.any? %>
+                        <% @feed.each do |activity|%>
+                            <% if activity.action_type == "Lesson" %>
+                                <div class="container mt-2">
+                                    <div class="media">
+                                        <div class="media-left media-middle">
+                                            <% if activity.user == current_user %>
+                                                <%= user_avatar(current_user, 'feed-avatar mr-3') %>
+                                            <% else %>
+                                                <%= user_avatar(activity.user, 'feed-avatar mr-3') %>
+                                            <% end %>
+                                        </div>
+                                        <div class="media-body align-self-center">
+                                            <%= link_to_if activity.user == current_user, "You", user_path(current_user) do
+                                                link_to activity.user.name, user_path(activity.user.id) end %> learned 
+                                            <%= activity.action.lesson_results %> of 
+                                            <%= activity.action.words.size %> in 
+                                            <%= link_to activity.action.category.title, lesson_path(activity.action.id) %>
+                                            <div>
+                                                <small class="text-muted"><%= time_ago_in_words(activity.created_at) %></small>
+                                            </div>                                    
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        <% end %>	
+                            <% else %>
+                                <div class="container mt-2">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <% if activity.user == current_user %>
+                                                <%= user_avatar(current_user, 'feed-avatar mr-3') %>
+                                            <% else %>
+                                                <%= user_avatar(activity.user, 'feed-avatar mr-3') %>
+                                            <% end %>
+                                        </div>
+                                        <div class="media-body align-self-center">
+                                            <%= link_to_if activity.user == current_user, "You", user_path(current_user) do
+                                                link_to activity.user.name, user_path(activity.user.id) end %> followed 
+                                            <%= link_to relationship_activity(activity.action.followed_id).name, user_path(activity.action.followed_id) %>
+                                            <div>
+                                                <small class="text-muted"><%= time_ago_in_words(activity.created_at) %></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>	
+                        <% end %>
+                    <% else %>
+                        <h3 class="text-muted text-center"> Nothing to show</h3>
                     <% end %>
                 </div>
                 <div class="card-footer">

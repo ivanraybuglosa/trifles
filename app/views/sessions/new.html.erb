@@ -1,45 +1,45 @@
-<div class="container authenticate">
-    <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="container">
-                        <div class="text-center">
-                            <h2>Framgia E-learning System</h2>
-                            <small class="text-muted">Please login to gain access</small>
-                        </div> 
-                        <hr>
-                        <%= form_for(:session, url: login_path) do |f| %>
-                            <% if flash[:notice] %>
-                                <div class="alert alert-danger center">
-                                <%= notice %>
+<div class="session-bg">
+    <div class="container authenticate">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="card session-card">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="text-center">
+                                <h2><strong>Framgia E-learning System</strong></h2>
+                                <small class="text-muted">Please login to gain access</small>
+                            </div> 
+                            <hr>
+                            <%= form_for(:session, url: login_path) do |f| %>
+                                <% if flash[:notice] %>
+                                    <div class="alert alert-danger center">
+                                    <%= notice %>
+                                    </div>
+                                <% end %>
+                                <div class="form-group">
+                                    <%= f.label :email %>
+                                    <%= f.email_field :email, class: 'form-control',
+                                                            placeholder: 'You\'ve got a registered email?' %>
                                 </div>
-                            <% end %>
-                            <div class="form-group">
-                                <%= f.label :email %>
-                                <%= f.email_field :email, class: 'form-control',
-                                                        placeholder: 'You\'ve got a registered email?' %>
-                            </div>
-                            <div class="form-group">
-                                <%= f.label :password %>
-                                <%= f.password_field :password, class: 'form-control', 
-                                                                placeholder: 'How \'bout password?' %>
-                            </div>
-                            <div class="form-group">
-                                <%= f.label :remember_me, class: 'checkbox-label inline' do %>
+                                <div class="form-group">
+                                    <%= f.label :password %>
+                                    <%= f.password_field :password, class: 'form-control', 
+                                                                    placeholder: 'How \'bout password?' %>
+                                </div>
+                                <div class="form-group">
                                     <%= f.check_box :remember_me %>
                                     <span>Remember me on this computer</span>                   
+                                </div>
+                                <div class="form-group text-right">
+                                    <%= link_to "Don't have an account yet? Register now!", 
+                                                                            signup_path, class: 'btn btn-link' %>
+                                    <%= f.submit "Login", class: 'btn btn-primary' %>
+                                </div>
+                                <%= link_to "/auth/google_oauth2", class: "btn btn-block btn-danger" do %>
+                                    Sign in with <span class="fa fa-google"></span>oogle
                                 <% end %>
-                            </div>
-                            <div class="form-group text-right">
-                                <%= link_to "Don't have an account yet? Register now!", 
-                                                                        signup_path, class: 'btn btn-link' %>
-                                <%= f.submit "Login", class: 'btn btn-primary' %>
-                            </div>
-                            <%= link_to "/auth/google_oauth2", class: "btn btn-block btn-danger" do %>
-                                 Sign in with <span class="fa fa-google"></span>oogle
                             <% end %>
-                        <% end %>
+                        </div>
                     </div>
                 </div>
             </div>

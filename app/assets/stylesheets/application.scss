@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require font-awesome
  */
 
  @import "bootstrap";
@@ -25,7 +24,7 @@ body {
   width: 900px;
 }
 
-.homepage img {
+.homepage img { 
   opacity: 0.7;
 }
 
@@ -64,6 +63,12 @@ body {
   height: 80px;
 }
 
+.navbar-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 25%;
+}
+
 .checkbox-label {
   margin-top: -10px;
   margin-bottom: 10px;
@@ -73,3 +78,26 @@ body {
   }
 }
 
+.bg-image {
+  width: 1445px;
+  opacity: 0.7;
+}
+
+.session {
+  background-image: url('session-bg.jpg');
+  background-size: cover;
+}
+
+.session-card {
+  opacity: 0.9;
+  border-radius: 15px;
+}
+
+.navbar-image {
+  width: 35px;
+  height: 35px;
+}
+
+.navbar-search {
+  width: 300px;
+}

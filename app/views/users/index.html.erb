@@ -10,7 +10,7 @@
                     <div class="card text-white bg-light mb-3 p-3">
                         <section>
                             <%= user_avatar(user,'profile-avatar') %>
-                            <%= link_to user.name, user_path(user) %>
+                            <%= link_to user.name, user_path(user), class: 'ml-2' %>
                             <% unless current_user?(user) %>
                                 <%= render partial: 'follow_form', locals: { user: user } %>
                             <% end %>
