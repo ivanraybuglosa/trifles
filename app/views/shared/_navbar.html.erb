@@ -31,32 +31,28 @@
                 <li class="nav-item">
                     <%= link_to "Categories", categories_path, class: 'nav-link' %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to "Members", users_path, class: 'nav-link' %>
-                </li>
-                
-                    <li class="nav-item dropdown">
-                        <%= link_to user_avatar(current_user,'navbar-avatar'), '#',    class: 'nav-link dropdown-toggle', 
-                                                                                id: 'navbarDropdown', 
-                                                                                role: 'button',
-                                                                                data: { toggle: 'dropdown' },
-                                                                                aria: { haspopup: 'true', expanded: 'false' } %>   
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <div class="dropdown-item">
-                                Signed in as <br /> <strong><%= current_user.name %></strong>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            <%= link_to "Profile", user_path(current_user), class: 'dropdown-item' %>
-                            <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
-                            <%= link_to "Logout", logout_path,  method: :delete, 
-                                                                class: 'dropdown-item' %>
-                            <% if current_user.admin? %>
-                                <div class="dropdown-divider"></div>
-                                <%= link_to "Category Management", admin_categories_path, class: 'dropdown-item' %>
-                                <%= link_to "User Management", admin_users_path, class: 'dropdown-item' %>
-                            <% end %>
+                <li class="nav-item dropdown">
+                    <%= link_to user_avatar(current_user,'navbar-avatar'), '#',    class: 'nav-link dropdown-toggle', 
+                                                                            id: 'navbarDropdown', 
+                                                                            role: 'button',
+                                                                            data: { toggle: 'dropdown' },
+                                                                            aria: { haspopup: 'true', expanded: 'false' } %>   
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-item">
+                            Signed in as <br /> <strong><%= current_user.name %></strong>
                         </div>
-                    </li>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to "Profile", user_path(current_user), class: 'dropdown-item' %>
+                        <%= link_to "Settings", edit_user_path(current_user), class: 'dropdown-item' %>
+                        <%= link_to "Logout", logout_path,  method: :delete, 
+                                                            class: 'dropdown-item' %>
+                        <% if current_user.admin? %>
+                            <div class="dropdown-divider"></div>
+                            <%= link_to "Category Management", admin_categories_path, class: 'dropdown-item' %>
+                            <%= link_to "User Management", admin_users_path, class: 'dropdown-item' %>
+                        <% end %>
+                    </div>
+                </li>
                 <% else %>
                     <li class="nav-item">
                         <%= link_to "About the E-learning System", login_path, class: 'nav-link' %>

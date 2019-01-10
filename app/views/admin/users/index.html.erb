@@ -24,8 +24,10 @@
                 <% end %>
             </tbody>
         </table>
-        <div class="container pagination justify-content-center">
-        <%= paginate @users, window: 1 %>
+        <div class="card-footer">
+            <div class="container pagination justify-content-center">
+            <%= paginate @users, window: 1 %>
+            </div>
         </div>
     </div>
 </div>
