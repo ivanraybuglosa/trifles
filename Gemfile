@@ -53,7 +53,6 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'pg', '0.17.1'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -69,7 +68,7 @@ group :test do
 end
 
 group :production do
- gem 'pg', '0.17.1'
+ gem 'pg'
  gem 'rails_12factor', '0.0.2'
 end
 
