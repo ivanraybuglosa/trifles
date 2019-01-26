@@ -1,48 +1,75 @@
-<div class="session-bg">
-    <div class="container authenticate">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <div class="card session-card">
-                    <div class="card-body">
-                        <div class="container">
-                            <div class="text-center">
-                                <h2><strong>Framgia E-learning System</strong></h2>
-                                <small class="text-muted">Please login to gain access</small>
-                            </div> 
-                            <hr>
-                            <%= form_for(:session, url: login_path) do |f| %>
-                                <% if flash[:notice] %>
-                                    <div class="alert alert-danger center">
-                                    <%= notice %>
-                                    </div>
-                                <% end %>
-                                <div class="form-group">
-                                    <%= f.label :email %>
-                                    <%= f.email_field :email, class: 'form-control',
-                                                            placeholder: 'You\'ve got a registered email?' %>
-                                </div>
-                                <div class="form-group">
-                                    <%= f.label :password %>
-                                    <%= f.password_field :password, class: 'form-control', 
-                                                                    placeholder: 'How \'bout password?' %>
-                                </div>
-                                <div class="form-group">
-                                    <%= f.check_box :remember_me %>
-                                    <span>Remember me on this computer</span>                   
-                                </div>
-                                <div class="form-group text-right">
-                                    <%= link_to "Don't have an account yet? Register now!", 
-                                                                            signup_path, class: 'btn btn-link' %>
-                                    <%= f.submit "Login", class: 'btn btn-primary' %>
-                                </div>
-                                <%= link_to "/auth/google_oauth2", class: "btn btn-block btn-danger" do %>
-                                    Sign in with <span class="fa fa-google"></span>oogle
-                                <% end %>
-                            <% end %>
+<section class="login-block">
+    <div class="container mt-80">
+	    <div class="row">
+		    <div class="col-md-4 login-sec">
+		        <h2 class="text-center">Login Now</h2>
+		         <%= form_for(:session, url: login_path, html: { class: 'login-form'}) do |f| %>
+                    <% if flash[:notice] %>
+                        <div class="alert alert-danger center">
+                        <%= notice %>
+                        </div>
+                    <% end %>
+                    <div class="form-group">
+                        <%= f.label :email %>
+                        <%= f.email_field :email, class: 'form-control',
+                                                placeholder: 'You\'ve got a registered email?' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :password %>
+                        <%= f.password_field :password, class: 'form-control', 
+                                                        placeholder: 'How \'bout password?' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.check_box :remember_me %>
+                        <span>Remember me on this computer</span>                   
+                    </div>
+                    <div class="form-group text-right">
+                        <%= link_to "Sign-up", signup_path, class: 'btn btn-link' %>
+                        <%= f.submit "Login", class: 'btn btn-primary' %>
+                    </div>
+                    <%= link_to "/auth/google_oauth2", class: "btn btn-block btn-danger" do %>
+                        Sign in with <span class="fa fa-google"></span>oogle
+                    <% end %>
+                <% end %>
+		    </div>
+		    <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <%= image_tag 'auth_image-1.jpeg', class: 'd-block img-fluid', alt: "test1" %>
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Socialize</h2>
+                                    <p>Follow the progress of other users and social with them.</p>
+                                </div>	
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <%= image_tag 'auth_image-2.jpeg', class: 'd-block img-fluid', alt: "test2" %>
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Improve your grammar</h2>
+                                    <p>Some categories are available to test and let you improve your english grammar</p>
+                                </div>	
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <%= image_tag 'auth_image-3.jpeg', class: 'd-block img-fluid', alt: "test3" %>
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Language Learning</h2>
+                                    <p>Browse through various levels of categories in learning different languages such as Nihonggo and Korean.</p>
+                                </div>	
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div>	   
             </div>
-        </div>
+	    </div>
     </div>
-</div>
+</section>

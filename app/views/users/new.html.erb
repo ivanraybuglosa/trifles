@@ -1,36 +1,71 @@
-<div class="container authenticate">
-    <div class="row">
-	    <div class="col-lg-6 offset-lg-3">
-	        <div class="container">
-                <h1 class="text-center">Sign-up</h1>
+<section class="login-block">
+    <div class="container mt-80">
+	    <div class="row">
+		    <div class="col-md-4 login-sec">
+		        <h2 class="text-center">Sign-up</h2>
                 <%= form_for(@user, url: signup_path) do |f| %>
-                <%= render 'shared/error_messages', object: f.object %>
-                <hr>
-                <div class="form-group">
-                    <%= f.label :name %>
-                    <%= f.text_field :name, class: 'form-control', 
-                                            placeholder: 'User Name' %>
-                </div>
-                <div class="form-group">
-                    <%= f.label :email %>
-                    <%= f.email_field :email, class: 'form-control', 
-                                            placeholder: 'Email' %>
-                </div>
-                <div class="form-group">
-                    <%= f.label :password %>
-                    <%= f.password_field :password, class: 'form-control', 
-                                                    placeholder: 'Password' %>
-                </div>
-                <div class="form-group">
-                    <%= f.label :password_confirmation %>
-                    <%= f.password_field :password_confirmation,  class: 'form-control', 
-                                                                placeholder: 'Re-enter your password' %>
-                </div>
-                <div class="form-group text-right">
-                    <%= link_to "Already got an account? Login now!", login_path, class: 'btn btn-link' %>
-                    <%= f.submit "Register", class: 'btn btn-primary' %>
-                </div>
-		    <% end %>
+                    <%= render 'shared/error_messages', object: f.object %>
+                    <hr>
+                    <div class="form-group">
+                        <%= f.text_field :name, class: 'form-control', 
+                                                placeholder: 'User Name' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.email_field :email, class: 'form-control', 
+                                                placeholder: 'Email' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.password_field :password, class: 'form-control', 
+                                                        placeholder: 'Password' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.password_field :password_confirmation,  class: 'form-control', 
+                                                                    placeholder: 'Re-enter your password' %>
+                    </div>
+                    <div class="form-group text-right">
+                        <%= link_to "Sign-in", login_path, class: 'btn btn-link' %>
+                        <%= f.submit "Register", class: 'btn btn-primary' %>
+                    </div>
+		        <% end %>
+		    </div>
+		    <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <%= image_tag 'auth_image-1.jpeg', class: 'd-block img-fluid', alt: "test1" %>
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Socialize</h2>
+                                    <p>Follow the progress of other users and social with them.</p>
+                                </div>	
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <%= image_tag 'auth_image-2.jpeg', class: 'd-block img-fluid', alt: "test2" %>
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Improve your grammar</h2>
+                                    <p>Some categories are available to test and let you improve your english grammar</p>
+                                </div>	
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <%= image_tag 'auth_image-3.jpeg', class: 'd-block img-fluid', alt: "test3" %>
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Language Learning</h2>
+                                    <p>Browse through various levels of categories in learning different languages such as Nihonggo and Korean.</p>
+                                </div>	
+                            </div>
+                        </div>
+                    </div>
+                </div>	   
+            </div>
 	    </div>
-	</div>
-</div>
+    </div>
+</section>
