@@ -11,7 +11,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> 
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="login-block">
+    <%= render 'shared/navbar' %>
+      <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       flash[:notice] = 'Invalid User Credentials'
-      render 'new'
+      render 'new', anchor: 'auth'
     end
   end
   

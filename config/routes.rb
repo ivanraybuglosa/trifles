@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       resources :words
     end
   end
-  root 'static_pages#home'
+  root 'static_pages#dashboard'
   # Routes for Google authentication
   get 'auth/:provider/callback', to: 'sessions#google_signin'
   get 'auth/failure', to: redirect('/')

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :index, :destroy]
   before_action :correct_user, only: [:edit, :update]
-  layout 'session', only: :new
+  layout 'session', only: [:new, :create]
   def new
     @user = User.new
   end
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         remember @user
         redirect_to root_path
       else
-        render 'new'
+        render 'new', anchor: 'auth'
       end
   end
 

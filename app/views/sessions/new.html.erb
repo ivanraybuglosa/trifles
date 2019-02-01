@@ -1,9 +1,11 @@
-<section class="login-block">
-    <div class="container mt-80">
+<%= render 'shared/about' %>
+
+<section>
+    <div class="login-container container mt-100">
 	    <div class="row">
 		    <div class="col-md-4 login-sec">
 		        <h2 class="text-center">Login Now</h2>
-		         <%= form_for(:session, url: login_path, html: { class: 'login-form'}) do |f| %>
+		         <%= form_for(:session, url: login_path(anchor: 'auth'), html: { class: 'login-form', id: 'auth' }) do |f| %>
                     <% if flash[:notice] %>
                         <div class="alert alert-danger center">
                         <%= notice %>
@@ -21,19 +23,22 @@
                     </div>
                     <div class="form-group">
                         <%= f.check_box :remember_me %>
-                        <span>Remember me on this computer</span>                   
+                        <small class="text-muted">Remember me on this computer</small>                   
                     </div>
                     <div class="form-group text-right">
-                        <%= link_to "Sign-up", signup_path, class: 'btn btn-link' %>
+                        <%= link_to "Sign-up", signup_path(anchor: 'auth'), class: 'btn btn-link' %>
                         <%= f.submit "Login", class: 'btn btn-primary' %>
                     </div>
-                    <%= link_to "/auth/google_oauth2", class: "btn btn-block btn-danger" do %>
-                        Sign in with <span class="fa fa-google"></span>oogle
-                    <% end %>
+                    <div class="text-center">
+                        <%= link_to "/auth/google_oauth2", class: "text-danger display-4 pull-center" do %>
+                            <i class="fa fa-google"></i>
+                        <% end %>
+                    </div>
+                    
                 <% end %>
 		    </div>
 		    <div class="col-md-8 banner-sec">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide carousel-slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -41,7 +46,7 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <%= image_tag 'auth_image-1.jpeg', class: 'd-block img-fluid', alt: "test1" %>
+                            <%= image_tag 'auth_image-1.jpeg', class: 'd-block auth-image', alt: "test1" %>
                             <div class="carousel-caption d-none d-md-block">
                                 <div class="banner-text">
                                     <h2>Socialize</h2>
@@ -50,7 +55,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <%= image_tag 'auth_image-2.jpeg', class: 'd-block img-fluid', alt: "test2" %>
+                            <%= image_tag 'auth_image-2.jpeg', class: 'd-block auth-image', alt: "test2" %>
                             <div class="carousel-caption d-none d-md-block">
                                 <div class="banner-text">
                                     <h2>Improve your grammar</h2>
@@ -59,7 +64,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <%= image_tag 'auth_image-3.jpeg', class: 'd-block img-fluid', alt: "test3" %>
+                            <%= image_tag 'auth_image-3.jpeg', class: 'd-block auth-image', alt: "test3" %>
                             <div class="carousel-caption d-none d-md-block">
                                 <div class="banner-text">
                                     <h2>Language Learning</h2>
