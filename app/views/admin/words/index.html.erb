@@ -23,7 +23,7 @@
                 <tr>
                     <th>Words</th>
                     <th>Answer</th>
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -33,8 +33,15 @@
                         <td><%= word.content %></td>
                         <td><%= word.correct_choice.content%></td>
                         <td>
-                            <%= link_to "Edit", edit_admin_category_word_path(category_id: @category.id, id: word.id), class: 'btn btn-outline-info' %>
-                            <%= link_to "Remove", admin_category_word_path(@category, word), method: :delete , class: 'btn btn-outline-danger' %>
+                            <%= link_to edit_admin_category_word_path(category_id: @category.id, id: word.id), class: 'btn btn-rounded' do %>
+                                <i class="fa fa-pencil-alt text-muted"></i>
+                            <% end %>
+
+                            <%= link_to admin_category_word_path(@category, word),  method: :delete, 
+                                                                        data: { confirm: 'Are you sure?' }, 
+                                                                        class: 'btn btn-rounded' do %>
+                                <i class="fa fa-trash-alt text-muted"></i>
+                            <% end %>
                         </td>
                     </tr>
                 <% end %>
