@@ -1,8 +1,9 @@
+<% provide(:title, "Edit") %>
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             <div class="container">
-                <h1 class="text-center">Edit Profile</h1>
+                <h1 class="text-center text-muted"><i class="fas fa-wrench"></i> Settings</h1>
                 <%= form_for(@user) do |f| %>
                 <%= render 'shared/error_messages', object: f.object %>
                 <hr>
