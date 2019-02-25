@@ -20,6 +20,7 @@ class Admin::WordsController < AdminController
     category = Category.find(params[:category_id])
     @word = category.words.build(word_params)
       if @word.save
+        flash[:success] = "Word successfully saved."
         redirect_to admin_category_words_url
       else
         render 'new'
@@ -38,7 +39,7 @@ class Admin::WordsController < AdminController
     @category = Category.find(params[:category_id])
     @word = @category.words.find(params[:id])
       if @word.update(word_params)
-        flash[:notice] = "Successfully updated Word"
+        flash[:info] = "Successfully updated Word"
         redirect_to admin_category_words_url
       else
         render 'edit'
@@ -49,7 +50,7 @@ class Admin::WordsController < AdminController
     category = Category.find(params[:category_id])
     word = category.words.find(params[:id])
     word.destroy
-    flash[:notice] = 'Word deleted.'
+    flash[:danger] = 'Word deleted.'
     redirect_to admin_category_words_url
   end
 

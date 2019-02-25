@@ -6,7 +6,7 @@ class Admin::CategoriesController < AdminController
   def create
     @category = Category.new(category_params)
       if @category.save
-        flash[:notice] = 'A new category has been added.' 
+        flash[:success] = 'A new category has been added.' 
         redirect_to admin_categories_url
       else
         render 'new'
@@ -29,7 +29,7 @@ class Admin::CategoriesController < AdminController
   def update
     @category = Category.find_by(id: params[:id])
       if @category.update_attributes(category_params)
-        flash[:notice] = 'Successfully updated category.'
+        flash[:info] = 'Successfully updated category.'
         redirect_to admin_categories_url
       else
         render 'edit'

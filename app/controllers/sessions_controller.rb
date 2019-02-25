@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       login user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      flash[:success] = "Successfully logged in!"
       redirect_to root_url
     else
       flash[:notice] = 'Invalid User Credentials'
