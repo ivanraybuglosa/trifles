@@ -16,7 +16,7 @@ class LessonsController < ApplicationController
   private
 
   def lesson_params
-    params.permit(:category_id).merge(user_id: current_user.id)
+    params.permit(:category_id).merge(user_id: current_user)
   end
 
   def single_lesson

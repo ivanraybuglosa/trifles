@@ -10,21 +10,3 @@ User.create!(name:  "Ivan Ray Buglosa",
     password:              "ivanbuglosa",
     password_confirmation: "ivanbuglosa",
     admin: true)
-
-99.times do |n|
-name  = Faker::Name.name
-email = "example-#{n+1}@gmail.com"
-password = "password"
-User.create!(name:  name,
-    email: email,
-    password:              password,
-    password_confirmation: password)
-end
-
-9.times do |n|
-    title  = "title-#{n+1}"
-    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    Category.create!(
-    title: title,
-    description: description)
-end
