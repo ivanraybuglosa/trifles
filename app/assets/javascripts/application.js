@@ -10,15 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require sweetalert2
-//= require sweet-alert2-rails
 //= require jquery3
-//= require jquery_ujs
+//= require popper
+//= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require popper
-//= require bootstrap-sprockets
 //= require_tree .
 
 $(document).ready(function() {
