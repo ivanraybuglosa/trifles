@@ -10,3 +10,9 @@ User.create!(name:         "Admin Account",
     password:              "password",
     password_confirmation: "password",
     admin: true)
+
+User.create!(name:         "Ivan Ray Buglosa",
+    email:                 "ivanraybuglosa@gmail.com",
+    password:              "password",
+    password_confirmation: "password",
+    admin: true)
