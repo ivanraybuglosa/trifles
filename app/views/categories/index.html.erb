@@ -22,29 +22,31 @@
         <% if @categories.any? %>
             <% @categories.each do |category| %> 
                 <div class="col-lg-6">
-                    <div class="jumbotron">
+                    <div class="jumbotron mt-2">
                         <% if category.get_lesson(current_user) && lesson_words(category).empty?   %>
                             <em class="text-muted pull-right">Learned <%= lesson(category).result %> of <%= category.words.size %></em>
                             <h3 class="display-6"><%= category.title %></h3>
-                            <p class="text-muted"><%= category.description %></p>
                             <%= link_to lesson_path(category.get_lesson(current_user).id), class: 'btn btn-light pull-right' do %>
                                 <i class="fa fa-eye" aria-hidden="true"></i> Show results
                             <% end %>
+                            <p class="text-muted"><%= category.description %></p>
+                            
                         <% else %>
                             <h3 class="display-6"><%= category.title %></h3>
-                            <p class="text-muted"><%= category.description %></p>
                             <%= form_for(@lesson) do |f| %>
                                 <%= hidden_field_tag :category_id, category.id %>
-                                <%= button_tag class: 'btn btn-primary pull-right' do %>
+                                <%= button_tag class: 'btn btn-primary float-right' do %>
                                     <i class="fa fa-book" aria-hidden="true"></i> Learn
                                 <% end %>
                             <% end %>
+                            <p class="text-muted"><%= category.description %></p>
+                            
                         <% end %>
                     </div>
                 </div>
             <% end %>
         <% else %>
-            <div class="col-lg-6 offset-lg-3">
+            <div class="col-lg-6 offset-lg-3 mt-5">
                 <h3 class="text-center text-muted">Nothing to show</h3>
             </div>
         <% end %>

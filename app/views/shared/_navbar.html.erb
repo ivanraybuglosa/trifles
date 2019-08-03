@@ -1,15 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
     <div class="container">
-        <%= link_to "Trifles", root_path, class: "navbar-brand text-uppercase font-weight-bold" %>
-        
-        <button class="navbar-toggler"  type="button" 
-                                        data-toggle="collapse" 
-                                        data-target="#navbarSupportedContent" 
-                                        aria-controls="navbarSupportedContent" 
-                                        aria-expanded="false" 
-                                        aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <h1><%= link_to "Trifles", root_path, class: "nav-brand text-uppercase" %></h1>
         <% if logged_in? %>
             <%= form_tag(users_path, method: :get, class: 'navbar-search' ) do %>
                 <div class="position-relative">
@@ -20,6 +11,14 @@
                 </div>
             <% end %>
         <% end %>
+        <button class="navbar-toggler"  type="button" 
+                                        data-toggle="collapse" 
+                                        data-target="#navbarSupportedContent" 
+                                        aria-controls="navbarSupportedContent" 
+                                        aria-expanded="false" 
+                                        aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
             <% if logged_in? %>
@@ -28,6 +27,9 @@
                 </li>
                 <li class="nav-item">
                     <%= link_to "Categories", categories_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Explore", users_path, class: 'nav-link' %>
                 </li>
                 <li class="nav-item dropdown">
                     <%= link_to user_avatar(current_user,'navbar-avatar'), '#',    class: 'nav-link dropdown-toggle', 
