@@ -16,14 +16,14 @@ class LessonsController < ApplicationController
   private
 
   def lesson_params
-    params.permit(:category_id).merge(user_id: current_user)
+    params.permit(:category_id).merge(user_id: current_user.id)
   end
 
   def single_lesson
     category = Category.find(params[:category_id])
     lesson = category.lessons.find_by(category_id: category, user_id: current_user)
-     unless lesson.nil?
-      lesson.destroy
-     end
+      unless lesson.nil?
+        lesson.destroy
+      end
   end
 end
