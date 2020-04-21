@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Elearning - <%= yield(:title) %></title>
+    <title>Trifles - <%= yield(:title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,8 +13,6 @@
   </head>
 
   <body class="login-block">
-    <%= render 'shared/navbar' %>
       <%= yield %>
-    <%= render 'shared/footer' %>
   </body>
 </html>

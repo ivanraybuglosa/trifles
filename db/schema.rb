@@ -12,19 +12,19 @@
 
 ActiveRecord::Schema.define(version: 2018_09_18_040501) do
 
-  create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "activities", force: :cascade do |t|
     t.integer "action_id"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.text "action_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
-  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "choice_id"
-    t.bigint "word_id"
-    t.bigint "lesson_id"
+  create_table "answers", force: :cascade do |t|
+    t.integer "choice_id"
+    t.integer "word_id"
+    t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["choice_id"], name: "index_answers_on_choice_id"
@@ -32,15 +32,15 @@ ActiveRecord::Schema.define(version: 2018_09_18_040501) do
     t.index ["word_id"], name: "index_answers_on_word_id"
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "word_id"
+  create_table "choices", force: :cascade do |t|
+    t.integer "word_id"
     t.string "content"
     t.boolean "correct", default: false
     t.datetime "created_at", null: false
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 2018_09_18_040501) do
     t.index ["word_id"], name: "index_choices_on_word_id"
   end
 
-  create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "category_id"
-    t.bigint "user_id"
+  create_table "lessons", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "user_id"
     t.integer "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_040501) do
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
-  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_040501) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.boolean "admin", default: false
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 2018_09_18_040501) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "category_id"
+  create_table "words", force: :cascade do |t|
+    t.integer "category_id"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
