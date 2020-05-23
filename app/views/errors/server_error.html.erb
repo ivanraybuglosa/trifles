@@ -1,4 +1,6 @@
 <% provide(:title, "500") %>
-<div class="d-flex justify-content-center align-items-center">
+<div class="d-flex justify-content-center align-items-center flex-column" style="height: 50vh">
+  <h1 class="display-1">500</h1>
   <h1 class="text-muted">Server Error, Please try again later</h1>
+  <p class="d-block">Take a look out of our awesome <%= link_to "trifles", logged_in? ? categories_path : login_path(anchor: 'auth') %> instead.</p>
 </div>
